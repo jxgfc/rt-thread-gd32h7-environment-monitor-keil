@@ -1,0 +1,8 @@
+from building import *
+
+cwd = GetCurrentDir()
+src = Glob('*.c')
+group = DefineGroup('LVGL application', src,
+                    depend=['BSP_USING_LVGL', 'PKG_USING_LVGL'],
+                    CPPPATH=[cwd])
+Return('group')

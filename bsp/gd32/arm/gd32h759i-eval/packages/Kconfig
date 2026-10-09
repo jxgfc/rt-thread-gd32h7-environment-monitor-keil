@@ -1,0 +1,22 @@
+menu "Local packages"
+
+menuconfig PKG_USING_LVGL
+    bool "LVGL (official)"
+    default n
+    select RT_USING_HEAP
+    if PKG_USING_LVGL
+        config PKG_LVGL_PATH
+            string
+            default "/packages/LVGL-v8.3.11"
+        choice
+            prompt "LVGL version"
+            default PKG_LVGL_USING_V080311
+            config PKG_LVGL_USING_V080311
+                bool "v8.3.11"
+        endchoice
+        config PKG_LVGL_VER_NUM
+            hex
+            default 0x080311
+    endif
+
+endmenu

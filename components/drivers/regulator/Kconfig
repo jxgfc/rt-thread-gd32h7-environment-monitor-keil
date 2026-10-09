@@ -1,0 +1,48 @@
+menuconfig RT_USING_REGULATOR
+    bool "Using Voltage and Current Regulator"
+    select RT_USING_ADT
+    select RT_USING_ADT_REF
+
+config RT_REGULATOR_FAN53555
+    bool "Fairchild FAN53555 / TCS4525 Regulator"
+    depends on RT_USING_REGULATOR
+    depends on RT_USING_I2C
+    depends on RT_USING_DM
+    default n
+
+config RT_REGULATOR_FIXED
+    bool "Fixed regulator support"
+    depends on RT_USING_REGULATOR
+    depends on RT_USING_DM
+    depends on RT_USING_OFW
+    depends on RT_USING_PIN
+    depends on RT_USING_PINCTRL
+    default y
+
+config RT_REGULATOR_GPIO
+    bool "GPIO regulator support"
+    depends on RT_USING_REGULATOR
+    depends on RT_USING_DM
+    depends on RT_USING_OFW
+    depends on RT_USING_PIN
+    default y
+
+config RT_REGULATOR_PWM
+    bool "PWM regulator support"
+    depends on RT_USING_REGULATOR
+    depends on RT_USING_DM
+    depends on RT_USING_PWM
+    depends on RT_USING_PIN
+    depends on RT_USING_OFW
+    default n
+
+config RT_REGULATOR_SCMI
+    bool "SCMI regulator support"
+    depends on RT_USING_REGULATOR
+    depends on RT_USING_OFW
+    depends on RT_FIRMWARE_ARM_SCMI
+    default n
+
+if RT_USING_REGULATOR
+    osource "$(SOC_DM_REGULATOR_DIR)/Kconfig"
+endif

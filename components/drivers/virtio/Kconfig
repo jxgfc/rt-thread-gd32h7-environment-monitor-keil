@@ -1,0 +1,111 @@
+menuconfig RT_USING_VIRTIO
+    bool "Using VirtIO device drivers"
+    depends on RT_USING_DM
+    depends on RT_USING_DMA
+    default n
+
+config RT_VIRTIO_TRANSPORT_MMIO
+    bool "Using VirtIO MMIO transport"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_OFW
+    default y
+
+config RT_VIRTIO_TRANSPORT_PCI
+    bool "Using VirtIO PCI transport"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_PCI
+    default y
+    help
+      We not support the version of 0.95 in PCI. The minimum version >= 1.0
+
+config RT_VIRTIO_NET
+    bool "VirtIO Net"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_ETHERNET
+    default y
+
+config RT_VIRTIO_BLK
+    bool "VirtIO BLK"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_BLK
+    default y
+
+config RT_VIRTIO_CONSOLE
+    bool "VirtIO Console"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_SERIAL
+    select RT_USING_DEVICE_IPC
+    select RT_USING_SYSTEM_WORKQUEUE
+    default y
+
+config RT_VIRTIO_RNG
+    bool "VirtIO RNG"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_HWCRYPTO
+    depends on RT_HWCRYPTO_USING_RNG
+    default y
+
+config RT_VIRTIO_RPMSG
+    bool "VirtIO Rpmsg"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_RPMSG
+    default y
+
+config RT_VIRTIO_SCSI
+    bool "VirtIO SCSI"
+    depends on RT_USING_VIRTIO
+    depends on RT_SCSI_SD || RT_SCSI_CDROM
+    default y
+
+config RT_VIRTIO_9P
+    bool "VirtIO 9P"
+    depends on RT_USING_VIRTIO
+    select RT_USING_DFS_9PFS
+    default y
+
+config RT_VIRTIO_RPROC_SERIAL
+    bool "VirtIO Remoteproc Serial Link"
+    depends on RT_USING_VIRTIO
+    select RT_VIRTIO_CONSOLE
+    default y
+
+config RT_VIRTIO_GPU
+    bool "VirtIO GPU"
+    depends on RT_USING_VIRTIO
+    default y
+
+config RT_VIRTIO_INPUT
+    bool "VirtIO Input"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_INPUT
+    depends on RT_INPUT_TOUCHSCREEN
+    default y
+
+config RT_VIRTIO_CRYPTO
+    bool "VirtIO Crypto"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_HWCRYPTO
+    depends on RT_HWCRYPTO_USING_AES
+    depends on RT_HWCRYPTO_USING_AES_ECB
+    depends on RT_HWCRYPTO_USING_AES_CBC
+    depends on RT_HWCRYPTO_USING_AES_CTR
+    depends on RT_HWCRYPTO_USING_DES
+    depends on RT_HWCRYPTO_USING_DES_ECB
+    depends on RT_HWCRYPTO_USING_DES_CBC
+    depends on RT_HWCRYPTO_USING_3DES
+    depends on RT_HWCRYPTO_USING_3DES_ECB
+    depends on RT_HWCRYPTO_USING_3DES_CBC
+    depends on RT_HWCRYPTO_USING_RC4
+    default y
+
+config RT_VIRTIO_SOUND
+    bool "VirtIO Sound"
+    depends on RT_USING_VIRTIO
+    depends on RT_USING_AUDIO
+    default y
+
+config RT_VIRTIO_SCMI
+    bool "VirtIO SCMI"
+    depends on RT_USING_VIRTIO
+    depends on RT_FIRMWARE_ARM_SCMI
+    default y

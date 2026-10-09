@@ -1,4 +1,4 @@
-# Build products; dependencies and the selected .config are source inputs.
+# Build products; source packages and the selected Keil project remain tracked.
 **/build/
 **/Debug/
 **/dist/
@@ -20,25 +20,33 @@
 *.d
 *.dep
 *.dblite
-.sconsign*
+*.sconsign*
 *.pyc
 *.pyo
 *.exe
+*.out
+*.app
 *.pdb
 *.log
-*.map
-*.axf
-*.bin
-*.hex
-*.uvoptx
-*.uvguix*
 *.htm
-*.uvopt
 *.uvoptx
 *.uvguix*
 *.bak
 *.old
 *.scvd
+*.slo
+*.lo
+*.gch
+*.pch
+*.ilk
+*.so
+*.dylib
+*.dll
+*.mod
+*.smod
+*.tmp
+*.swp
+*.dwo
 JLinkLog.txt
 JLinkSettings.ini
 **/DebugConfig/
@@ -47,7 +55,6 @@ JLinkSettings.ini
 **/.idea/
 .DS_Store
 Thumbs.db
-# Real device data and local secrets do not belong in source control.
 envlog.csv
 decoded_envlog.csv
 ecfg0.bin
@@ -56,7 +63,4 @@ ecfg1.bin
 .env.*
 *.pem
 *.key
-# Word-compatible report is generated separately, not a source dependency.
-PROJECT_REPORT.html
-
 *.zip

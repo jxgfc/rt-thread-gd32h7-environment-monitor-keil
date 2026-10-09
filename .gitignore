@@ -58,3 +58,5 @@ ecfg1.bin
 *.key
 # Word-compatible report is generated separately, not a source dependency.
 PROJECT_REPORT.html
+
+*.zip
